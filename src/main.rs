@@ -3,6 +3,7 @@ extern crate serde;
 extern crate serde_json;
 
 use serde::Deserialize;
+use std::io;
 
 #[derive(Deserialize, Debug)] //Automatically generates code to allow the Weather struct to be deserialized from JSON and formatted for debugging.
 struct ResultData {
@@ -46,6 +47,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("Minimal Temperature: {} °C", result.tre200dn);
         println!("Maximal Temperature: {} °C", result.tre200dx);
         println!("Relative Humidity: {} %", result.ure200d0);
+        io::stdin().read_line(&mut String::new()).unwrap();
     }
     Ok(())
 }
